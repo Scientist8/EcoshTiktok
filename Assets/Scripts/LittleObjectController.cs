@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LittleObjectController : MonoBehaviour
 {
+    [SerializeField] GameObject deathParticle;
     public float speed = 10f;
 
     //===================================================================================
@@ -19,6 +20,8 @@ public class LittleObjectController : MonoBehaviour
     {
         if (other.gameObject.tag == "Wall")
         {
+            GameObject go = Instantiate(deathParticle, transform.position, Quaternion.identity);
+            go.transform.Rotate( new Vector3(-90, 0, 0));
             Destroy(this.gameObject);
         }
     }
